@@ -1,30 +1,30 @@
 public class Asteroid extends Floater
 {
   private int myNum;
-  public Asteroid(int dx, int dy, int cx, int cy, int pd, int rs) {
-  corners = 6;
+  public Asteroid() {
+  corners = 8;
   xCorners= new int[corners];
   yCorners= new int[corners];
-  xCorners[0] =-11;
-  yCorners[0] =-8;
-  xCorners[1] =7;
+  xCorners[0] =-25;
+  yCorners[0] =-5;
+  xCorners[1] =20;
   yCorners[1] =-8;
-  xCorners[2] =13;
+  xCorners[2] =-3;
   yCorners[2] =0;
-  xCorners[3] =6;
-  yCorners[3] =10;
-  xCorners[4] =-11;
+  xCorners[3] =12;
+  yCorners[3] =20;
+  xCorners[4] =-10;
   yCorners[4] =8;
-  xCorners[5] =-5;
+  xCorners[5] =-9;
   yCorners[5] =0;
+  xCorners[6]=-20;
+  yCorners[6]=23;
+  xCorners[7]=6;
+  yCorners[7]=-2;
+  
       setPointDirection((int)(Math.random()*360)+1);
    myColor = color(220,220,220);
-   myCenterX = cx;
-   myCenterY = cy;
-   myDirectionX = dx;
-   myDirectionY = dy;
-   myPointDirection = pd;
-   myNum = rs;
+ 
 }
 
 public void move(){
