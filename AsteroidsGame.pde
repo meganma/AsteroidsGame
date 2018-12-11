@@ -1,21 +1,19 @@
-Spaceship one = new Spaceship();
+Spaceship one;
 Star[] stars = new Star[200];
-Asteroid [] asteroid = new Asteroid[20];
+ArrayList <Asteroid> asteroid = new ArrayList <Asteroid>();
 public void setup() 
 {
   size(1000, 1000);
   for(int i = 0; i<stars.length; i++){
     stars[i] = new Star();
   }
-  asteroid = new Asteroid [20];
-      for(int i = 0; i < asteroid.length; i++){
-   int cy = (int)(Math.random() * 1001);
-   int cx = (int)(Math.random() * 1001);
-   int dx = (int)(Math.random() * 2);
-   int dy = (int)(Math.random() * 2);
-   int pd = (int)(Math.random() * 360);
-   int rs = (int)(Math.random() * 2 + 1);
-   asteroid[i] = new Asteroid(dx, dy, cx, cy, pd, rs); 
+   one= new Spaceship();
+   for(int i = 0; i < 30; i++){
+   asteroid.add(new Asteroid());
+   asteroid.get(i).setDirectionX(Math.random()*5-2);
+   asteroid.get(i).setDirectionY(Math.random()*5-2);
+   asteroid.get(i).setPointDirection((int)(Math.random()*360));
+   asteroid.get(i).myColor = 200;
   }
 }
 public void draw() 
@@ -24,11 +22,15 @@ public void draw()
   one.move();
   for(int i = 0; i<stars.length; i++){
      stars[i].show();
+     one.show();
   }
-  one.show();
-   for(int i = 0; i < asteroid.length; i++){
-   asteroid[i].show();
-   asteroid[i].move();
+  
+ for(int i = 0; i < asteroid.size(); i++){
+   asteroid.get(i).show();
+   asteroid.get(i).move();
+     if(dist(one.getX(),one.getY(), asteroid.get(i).getX(), asteroid.get(i).getY()) <= 23){
+      asteroid.remove(i);
+ }
  }
 }
 public void keyPressed(){
