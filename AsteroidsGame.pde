@@ -1,6 +1,7 @@
 Spaceship one;
 Star[] stars = new Star[200];
 ArrayList <Asteroid> asteroid = new ArrayList <Asteroid>();
+ArrayList <Bullet> micasa = new ArrayList<Bullet>();
 public void setup() 
 {
   size(1000, 1000);
@@ -28,6 +29,24 @@ public void draw()
  for(int i = 0; i < asteroid.size(); i++){
    asteroid.get(i).show();
    asteroid.get(i).move();
+   
+     for(int i = 0; i< micasa.size() ; i++)
+{
+   micasa.get(i).show();
+   micasa.get(i).move();
+  
+}
+   for(int i = 0; i<asteroid.size() ; i++){
+     for(int q = 0; q <micasa.size(); q++)
+     {
+   if (dist(micasa.get(q).getX(), micasa.get(q).getY(), micasa.get(i).getX(), micasa.get(i).getY())<=27 ){
+   asteroid.remove(i);   
+   micasa.remove(q);
+   break;
+   }
+   }
+   }
+   
      if(dist(one.getX(),one.getY(), asteroid.get(i).getX(), asteroid.get(i).getY()) <= 23){
       asteroid.remove(i);
  }
@@ -51,4 +70,5 @@ public void keyPressed(){
     one.setY((int)(Math.random()*1000));
     
   }
+    if(key == 'r'){micasa.add(new Bullet(one));}
 }
